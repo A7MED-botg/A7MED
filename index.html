@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>مولد الصور</h1>
+    <input type="text" id="text-input" placeholder="أدخل النص">
+    <button onclick="generateImage()">إرسال</button>
+    <div id="image-container"></div>
+</div>
+
+<div class="developer-name">
+    ✨ تم التطوير بواسطة: 𓂀 A 7 M E D 🔥
+</div>
+
+<script>
+    async function generateImage() {
+        const textInput = document.getElementById('text-input').value;
+        const imageContainer = document.getElementById('image-container');
+        imageContainer.innerHTML = "جاري تحميل الصورة...";
+        
+        try {
+            const response = await fetch("https://api.getimg.ai/v1/stable-diffusion-xl/text-to-image", {
+                method: "POST",
+                headers: {
+                    "Authorization": "Bearer key-3XbWkFO34FVCQUnJQ6A3qr702Eu7DDR1dqoJOyhMHqhruEhs22KUzR7w631ZFiA5OFZIba7i44qDQEMpKxzegOUm83vCfILb",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    height: 1024,
+                    model: "realvis-xl-v4",
+                    negative_prompt: "nude, naked, porn, sexual, explicit, adult, sex, xxx, erotic, blowjob, masturbation, intercourse, hentai, vulgar, profane, obscene, dirty, slut, whore, rape, fetish, gangbang, threesome, stripper, escort",
+                    prompt: textInput,
+                    response_format: "url",
+                    seed: 0,
+                    steps: 30,
+                    width: 1024
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.url) {
+                imageContainer.innerHTML = `<img src="${data.url}" alt="Generated Image">`;
+            } else {
+                imageContainer.innerHTML = "حدث خطأ أثناء توليد الصورة.";
+            }
+        } catch (error) {
+            imageContainer.innerHTML = "حدث خطأ: " + error.message;
+        }
+    }
+</script>
+
+</body>
+</html>
