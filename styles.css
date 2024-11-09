@@ -1,0 +1,95 @@
+/* تنسيقات الصفحة العامة */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f7f9fc;
+    color: #333;
+}
+
+/* تنسيق الصندوق الرئيسي */
+.container {
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 400px;
+    transition: transform 0.3s;
+}
+
+.container:hover {
+    transform: scale(1.02);
+}
+
+/* تنسيق النصوص */
+h1 {
+    color: #3a8dff;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #3a8dff;
+}
+
+/* تنسيق الزر */
+button {
+    padding: 10px 20px;
+    background-color: #3a8dff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #357ae8;
+    box-shadow: 0 4px 10px rgba(58, 141, 255, 0.3);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* تنسيق صورة النتيجة */
+#image-container img {
+    max-width: 100%;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* تنسيق اسم المطور */
+.developer-name {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #555;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-shadow: 1px 1px 2px #999;
+    text-align: center;
+    transition: color 0.3s;
+}
+
+.developer-name:hover {
+    color: #3a8dff;
+}
