@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -5,51 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Generator</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .intro-container {
-            background-color: #2196F3;
-            color: white;
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .ad-container {
-            background-color: #4CAF50;
-            color: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-        .ad-container h2 {
-            margin-top: 0;
-        }
-        .ad-container a {
-            color: #FFD700;
-            text-decoration: none;
-        }
-    </style>
 </head>
 <body>
 
-<div class="intro-container">
-    <h1>مولد الصور</h1>
-    <p>يقوم بتحويل النص إلى صورة باستخدام أحدث تقنيات الذكاء الاصطناعي.</p>
-</div>
-
 <div class="container">
+    <h1>مولد الصور</h1>
+<p> يقوم بتحويل النص الى صورة باستخدام احدث ادوات الذكاء الاصطناعي</p>
     <input type="text" id="text-input" placeholder="أدخل النص">
     <button onclick="generateImage()">إرسال</button>
     <div id="image-container"></div>
 </div>
 
-<div class="ad-container">
+<div class="ad-container" style="background-color: #4CAF50; color: white; border-radius: 15px; padding: 20px; width: 300px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center; margin: 20px auto;">
     <h2>منصة النجاح المستمر</h2>
     <p>✨ كورسات مجانية في مجالات كثيرة: التسويق، البرمجة، التصميم، وأكثر!</p>
     <p>🚀 تعلم في أي وقت ومن أي مكان. شهادات معتمدة!</p>
-    <p><a href="https://whatsapp.com/channel/0029VajVBL6002T7c5Pugw0P">📅 سجل الآن!</a></p>
+    <p><a href="https://whatsapp.com/channel/0029VajVBL6002T7c5Pugw0P" style="color: #FFD700; text-decoration: none;">📅 سجل الآن!</a></p>
     <p>نجاحك يبدأ من هنا! 🌟</p>
 </div>
 
@@ -84,4 +56,16 @@
 
             const data = await response.json();
 
-            if (data
+            if (data.url) {
+                imageContainer.innerHTML = `<img src="${data.url}" alt="Generated Image">`;
+            } else {
+                imageContainer.innerHTML = "حدث خطأ أثناء توليد الصورة.";
+            }
+        } catch (error) {
+            imageContainer.innerHTML = "حدث خطأ: " + error.message;
+        }
+    }
+</script>
+
+</body>
+</html>
